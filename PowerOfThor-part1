@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ * ---
+ * Hint: You can use the debug stream to print initialTX and initialTY, if Thor seems not follow your orders.
+ **/
+int main()
+{
+    int lightX; // the X position of the light of power
+    int lightY; // the Y position of the light of power
+    int initialTX; // Thor's starting X position
+    int initialTY; // Thor's starting Y position
+    cin >> lightX >> lightY >> initialTX >> initialTY; cin.ignore();
+
+    int currentX = initialTX;
+    int currentY = initialTY;
+    string dir;
+    // game loop
+    while (true) {
+        int remainingTurns; // The remaining amount of turns Thor can move. Do not remove this line.
+        cin >> remainingTurns; cin.ignore();
+
+        // Write an action using cout. DON'T FORGET THE "<< endl"
+        // To debug: cerr << "Debug messages..." << endl;
+    if      ((currentY<lightY)&&(currentX<lightX)){currentY++; currentX++; dir ="SE";}
+    else if ((currentY>lightY)&&(currentX<lightX)){currentY--; currentX++; dir ="NE";}
+    else if ((currentY>lightY)&&(currentX>lightX)){currentY++; currentX--; dir ="NW";}
+    else if ((currentY<lightY)&&(currentX>lightX)){currentY++; currentX--; dir ="SW";}
+
+    else if (currentY<lightY){currentY++; dir = "S";}
+    else if (currentY>lightY){currentY--; dir = "N";}
+    else if (currentX<lightX){currentX++; dir = "E";}
+    else if (currentX>lightX){currentX--; dir = "W";}           
+            cout << dir << endl;
+    }    
+}
