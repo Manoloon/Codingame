@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+int main()
+{
+    int MinDiff = 99999;
+    vector<int>Mejores;
+    int maxN=0;
+    int minN = 99999;
+    int N;
+    cin >> N; cin.ignore();
+    int arr[N];  
+
+    for (int i = 0; i < N; i++) {
+        int Pi;
+        cin >> Pi; cin.ignore();
+        arr[i]=Pi;
+    }
+    int arrN = sizeof(arr)/sizeof(*arr);
+    sort(arr,arr + arrN);
+    for(int i = 0;i<arrN;i++)
+    {
+        
+        if(arr[i]>maxN)
+        {
+            int diff = arr[i] -maxN;
+            if(diff < MinDiff)
+            {
+                MinDiff = diff;
+            }
+            maxN = arr[i];
+        }
+        else if (arr[i]<minN)
+        {
+            int diff = minN - arr[i];
+            if(diff < MinDiff)
+            {
+                MinDiff = diff;
+            }
+            minN = arr[i];
+        }
+        else
+        {
+            for(int j =0;j<i;++j)
+            {
+                int diff = abs(Mejores[j]-arr[i]);
+                if(diff < MinDiff)
+                {
+                    MinDiff = diff;
+                }
+            }
+            Mejores.push_back(arr[i]);
+        }
+    }
+    // Write an answer using cout. DON'T FORGET THE "<< endl"
+    // To debug: cerr << "Debug messages..." << endl;
+    cout << MinDiff << endl;
+}
