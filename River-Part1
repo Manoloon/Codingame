@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+int GetRiver(int x)
+{
+    int sum=0;
+    while(x!=0)
+    {
+        sum = sum+x%10;
+        x=x/10;
+    }
+    return sum;
+}
+
+int digitalRiver=0;
+int main()
+{
+    long long r_1;
+    cin >> r_1; cin.ignore();
+    long long r_2;
+    cin >> r_2; cin.ignore();
+    while(r_1 != r_2)
+    {
+       if(r_1 < r_2)
+        {
+            r_1 = r_1 + GetRiver(r_1);
+        }
+        if(r_1 > r_2)
+        {
+            r_2 += GetRiver(r_2);
+        }
+
+    }
+       
+    // Write an answer using cout. DON'T FORGET THE "<< endl"
+    // To debug: cerr << "Debug messages..." << endl;
+
+    cout << r_1 << endl;
+}
